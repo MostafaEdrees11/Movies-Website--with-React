@@ -1,16 +1,14 @@
 import "./App.css";
-import Header from "./components/Navbar";
-import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import NotFound from "./pages/NotFound";
 import AppRoutes from "./components/AppRoutes";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
     <>
-      <AppRoutes />
+      <Provider store={store}>
+        <AppRoutes />
+      </Provider>
     </>
   );
 }

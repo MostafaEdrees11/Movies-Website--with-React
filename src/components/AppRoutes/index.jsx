@@ -6,6 +6,7 @@ import NotFound from "../../pages/NotFound";
 import Layout from "../Layout";
 import Movies from "../../pages/Movies";
 import MovieDetails from "../../pages/Movies/details";
+import FavoritesPage from "../../pages/Favorites";
 
 const routes = createBrowserRouter([
   {
@@ -14,9 +15,8 @@ const routes = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/home", element: <Home /> },
-      { path: "/favorites", element: <Home /> },
+      { path: "/favorites", element: <FavoritesPage /> },
       { path: "/movie/:id", element: <MovieDetails /> },
-      // { path: "/favorites", element: <Movies /> },
     ],
   },
   { path: "/login", element: <Login /> },
