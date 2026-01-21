@@ -1,17 +1,34 @@
+import { Link } from "react-router";
+
 function Header() {
   return (
     <>
       <div className="navbar bg-base-100 shadow-sm">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Movies</a>
+          <Link to="/home" className="btn btn-ghost text-xl">
+            Movies
+          </Link>
+          <Link to="/favorites" className="btn btn-ghost text-xl">
+            Favorites
+          </Link>
+          {/* <a className="btn btn-ghost text-xl">Movies</a>
+          <a className="btn btn-ghost text-xl">Favorites</a> */}
         </div>
         <div className="flex gap-2">
-          <input
+          {/* <input
             type="text"
             placeholder="Search"
             className="input input-bordered w-24 md:w-auto"
-          />
-          <div className="dropdown dropdown-end">
+          /> */}
+          <Link to="/login" className="btn btn-ghost text-xl">
+            Login
+          </Link>
+          <Link to="/register" className="btn btn-ghost text-xl">
+            Register
+          </Link>
+          {/* <a className="btn btn-ghost text-xl">Login</a>
+          <a className="btn btn-ghost text-xl">Register</a> */}
+          {/* <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
@@ -41,7 +58,7 @@ function Header() {
                 <a>Logout</a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
