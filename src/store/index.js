@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import favoritesReducer from './slices/favorites'
+import getAllMoviesReduces from './slices/movies'
 
 
 const store = configureStore({
     reducer: {
-        favorites: favoritesReducer
+        favorites: favoritesReducer,
+        movies: getAllMoviesReduces
     }
 });
 
