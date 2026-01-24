@@ -1,29 +1,18 @@
 import Movies from "../Movies";
 import { useEffect, useState } from "react";
-import { getAllMovies, searchOnMovie } from "../../services/movies.api";
 import Pagination from "../../components/Pagination";
 import Search from "../../components/Search";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllMoviesAction,
-  searchForMovieAction,
-} from "../../store/slices/movies";
+import { useFetchWithMoves } from "../../hooks/useFetchWithMovies";
 
 function Home() {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
 
-  const moviesState = useSelector((state) => state.movies);
-  const dispatch = useDispatch();
+  const [movies, totalPages, loading, error, getMovies] = useFetchWithMoves();
 
   useEffect(() => {
-    if (query == "") {
-      dispatch(getAllMoviesAction(page));
-      if (page > moviesState.totalPages) setPage(1);
-    } else {
-      dispatch(searchForMovieAction({ query, page }));
-      if (page > moviesState.totalPages) setPage(1);
-    }
+    getMovies({ query, page });
+    if (page > totalPages) setPage(1);
   }, [page, query]);
 
   return (
@@ -31,11 +20,11 @@ function Home() {
       <div className="flex justify-center p-4 gap-4">
         <Search updateSearch={setQuery} />
       </div>
-      <Movies moviesList={moviesState.moviesList} />
+      <Movies moviesList={movies} />
       <div className="text-center m-2">
         <Pagination
           currentPage={page}
-          totalPages={moviesState.totalPages ?? 2}
+          totalPages={totalPages ?? 2}
           changePage={setPage}
         />
       </div>
