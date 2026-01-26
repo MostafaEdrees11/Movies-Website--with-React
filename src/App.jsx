@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <AppRoutes />
+        <div dir={localStorage.getItem("lang") == "en" ? "ltr" : "rtl"}>
+          <AppRoutes />
+        </div>
       </Provider>
     </>
   );
